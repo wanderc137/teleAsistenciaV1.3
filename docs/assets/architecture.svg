@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">Arquitectura de Alerta Mayor</title>
+  <desc id="desc">Diagrama de arquitectura con dos telefonos Android, servidor de senalizacion Node.js, Firebase Cloud Messaging y servidores STUN/TURN. Los medios WebRTC van punto a punto.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0b1017"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="cardRed" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2a1213"/>
+      <stop offset="100%" stop-color="#1a0e0f"/>
+    </linearGradient>
+    <linearGradient id="cardBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f1c2c"/>
+      <stop offset="100%" stop-color="#101822"/>
+    </linearGradient>
+    <linearGradient id="cardGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10241a"/>
+      <stop offset="100%" stop-color="#0f1a15"/>
+    </linearGradient>
+    <linearGradient id="p2p" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#D32F2F" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#D32F2F" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#D32F2F" stop-opacity="0.15"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b949e"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#D32F2F"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2E7D32"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="820" fill="url(#bg)"/>
+
+  <!-- grid -->
+  <g stroke="#1b2431" stroke-width="1" opacity="0.5">
+    <path d="M0 100 H1200 M0 200 H1200 M0 300 H1200 M0 400 H1200 M0 500 H1200 M0 600 H1200 M0 700 H1200"/>
+    <path d="M100 0 V820 M200 0 V820 M300 0 V820 M400 0 V820 M500 0 V820 M600 0 V820 M700 0 V820 M800 0 V820 M900 0 V820 M1000 0 V820 M1100 0 V820"/>
+  </g>
+
+  <!-- header -->
+  <text x="60" y="62" fill="#E6E6E6" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="30" font-weight="700">Alerta Mayor · Arquitectura</text>
+  <text x="60" y="90" fill="#8b949e" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15">Senalizacion por WebSocket · medios WebRTC punto a punto · push FCM como red de seguridad</text>
+  <line x1="60" y1="108" x2="1140" y2="108" stroke="#21262d" stroke-width="1"/>
+
+  <!-- server -->
+  <rect x="390" y="150" width="420" height="128" rx="14" fill="url(#cardBlue)" stroke="#1565C0" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="420" cy="182" r="7" fill="#1565C0"/>
+  <text x="440" y="188" fill="#E6E6E6" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="19" font-weight="700">Servidor de senalizacion</text>
+  <text x="414" y="216" fill="#9fb3c8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">Node.js 18+ · ws · :3000</text>
+  <text x="414" y="238" fill="#9fb3c8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">register · call · offer · answer · ice</text>
+  <text x="414" y="260" fill="#7d8ea3" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">clients · fcmTokens · pendingCalls</text>
+
+  <!-- Firebase -->
+  <rect x="880" y="150" width="260" height="128" rx="14" fill="#1a1408" stroke="#F9A825" stroke-width="2"/>
+  <text x="908" y="188" fill="#E6E6E6" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18" font-weight="700">Firebase Cloud</text>
+  <text x="908" y="210" fill="#E6E6E6" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18" font-weight="700">Messaging</text>
+  <text x="908" y="238" fill="#c9a85f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">data-only · priority high</text>
+  <text x="908" y="258" fill="#c9a85f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">despierta al supervisor</text>
+
+  <!-- STUN TURN -->
+  <rect x="60" y="150" width="250" height="128" rx="14" fill="#141a22" stroke="#3b4757" stroke-width="1.5"/>
+  <text x="86" y="186" fill="#E6E6E6" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18" font-weight="700">STUN / TURN</text>
+  <text x="86" y="212" fill="#9fb3c8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">stun.l.google.com:19302</text>
+  <text x="86" y="234" fill="#9fb3c8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">turn:TU-DOMINIO:3478</text>
+  <text x="86" y="256" fill="#7d8ea3" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">opcional · NAT estricto</text>
+
+  <!-- supervised phone -->
+  <rect x="90" y="400" width="400" height="250" rx="18" fill="url(#cardRed)" stroke="#D32F2F" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="330" y="424" width="130" height="18" rx="9" fill="#3a1a1a"/>
+  <text x="118" y="440" fill="#FF8A80" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">MODO SUPERVISADO</text>
+  <circle cx="180" cy="545" r="52" fill="#D32F2F"/>
+  <circle cx="163" cy="528" r="18" fill="#ef5350" opacity="0.55"/>
+  <text x="180" y="558" text-anchor="middle" fill="#FFC107" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="26" font-weight="800">SOS</text>
+  <text x="255" y="520" fill="#E6E6E6" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700">Boton de emergencia</text>
+  <text x="255" y="544" fill="#c8a2a2" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13">200 dp · rebote 1600 ms</text>
+  <text x="255" y="566" fill="#c8a2a2" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13">haptico al pulsar</text>
+  <text x="255" y="596" fill="#9e7b7b" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">auto-respuesta + altavoz</text>
+  <text x="255" y="618" fill="#9e7b7b" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">QR de vinculacion</text>
+
+  <!-- supervisor phone -->
+  <rect x="710" y="400" width="400" height="250" rx="18" fill="url(#cardGreen)" stroke="#2E7D32" stroke-width="2" filter="url(#shadow)"/>
+  <text x="738" y="440" fill="#81c784" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">MODO SUPERVISOR</text>
+  <rect x="738" y="470" width="344" height="56" rx="10" fill="#0d1a12" stroke="#2E7D32" stroke-width="1"/>
+  <text x="758" y="504" fill="#E6E6E6" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700">Mama</text>
+  <circle cx="880" cy="498" r="6" fill="#2E7D32"/>
+  <text x="894" y="503" fill="#81c784" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13">En linea</text>
+  <rect x="1000" y="482" width="68" height="32" rx="8" fill="#D32F2F"/>
+  <text x="1034" y="503" text-anchor="middle" fill="#ffffff" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700">Llamar</text>
+  <rect x="738" y="542" width="344" height="46" rx="10" fill="#122a1c" stroke="#2E7D32" stroke-width="1"/>
+  <text x="758" y="571" fill="#cfe8d6" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14">Escanear QR para vincular</text>
+  <text x="738" y="616" fill="#7fa88b" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">overlay Aceptar / Rechazar</text>
+  <text x="738" y="638" fill="#7fa88b" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">notificacion fullScreenIntent</text>
+
+  <!-- signaling links -->
+  <path d="M290 400 C290 330 470 330 470 278" fill="none" stroke="#8b949e" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+  <text x="300" y="352" fill="#9fb3c8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">WebSocket wss://</text>
+  <path d="M810 400 C810 330 730 330 730 278" fill="none" stroke="#8b949e" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+  <text x="822" y="352" fill="#9fb3c8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">WebSocket wss://</text>
+
+  <!-- FCM link -->
+  <path d="M810 278 L1000 278" fill="none" stroke="#F9A825" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+  <text x="828" y="300" fill="#c9a85f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">HTTPS push</text>
+
+  <!-- STUN -->
+  <path d="M180 400 L180 278" fill="none" stroke="#3b4757" stroke-width="2" stroke-dasharray="4 6" marker-end="url(#arrow)"/>
+  <text x="192" y="330" fill="#7d8ea3" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">ICE</text>
+
+  <!-- P2P media -->
+  <rect x="250" y="710" width="700" height="62" rx="12" fill="#1a0f10" stroke="#D32F2F" stroke-width="1.5"/>
+  <line x1="290" y1="741" x2="910" y2="741" stroke="url(#p2p)" stroke-width="6" marker-end="url(#arrowRed)"/>
+  <text x="600" y="734" text-anchor="middle" fill="#ffb4b4" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700">WebRTC P2P · audio + video cifrados (SRTP/DTLS)</text>
+  <text x="600" y="756" text-anchor="middle" fill="#9e7b7b" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">el servidor nunca ve los medios · relay TURN solo si el NAT lo exige</text>
+
+  <!-- legend -->
+  <g font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#8b949e">
+    <line x1="60" y1="792" x2="100" y2="792" stroke="#8b949e" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="110" y="796">Senalizacion</text>
+    <line x1="210" y1="792" x2="250" y2="792" stroke="#D32F2F" stroke-width="4"/>
+    <text x="260" y="796">Medios P2P</text>
+    <line x1="360" y1="792" x2="400" y2="792" stroke="#F9A825" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="410" y="796">Push FCM</text>
+  </g>
+  <text x="1140" y="796" text-anchor="end" fill="#4b5563" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11">v1.3.0 · com.alertamayor.app</text>
+</svg>

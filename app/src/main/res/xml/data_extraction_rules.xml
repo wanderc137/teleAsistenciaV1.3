@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- I-003 (V1.3): se excluye el DataStore de ajustes (contiene credenciales TURN
+     en texto plano) del backup en nube / transferencia de dispositivo. -->
+<data-extraction-rules>
+    <cloud-backup>
+        <include domain="file" path="." />
+        <exclude domain="file" path="datastore/alertamayor_settings.preferences_pb" />
+    </cloud-backup>
+    <device-transfer>
+        <include domain="file" path="." />
+        <exclude domain="file" path="datastore/alertamayor_settings.preferences_pb" />
+    </device-transfer>
+</data-extraction-rules>

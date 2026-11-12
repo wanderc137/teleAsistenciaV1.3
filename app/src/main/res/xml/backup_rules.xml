@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- I-003 (V1.3): se excluye el DataStore de ajustes (contiene credenciales TURN
+     en texto plano) del backup en nube para no respaldar la contraseña. -->
+<full-backup-content>
+    <include domain="file" path="." />
+    <exclude domain="file" path="datastore/alertamayor_settings.preferences_pb" />
+</full-backup-content>

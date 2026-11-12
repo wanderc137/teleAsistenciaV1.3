@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Alerta Mayor</string>
+
+    <!-- Onboarding / Mode selection -->
+    <string name="onboarding_title">How will you use the app?</string>
+    <string name="onboarding_subtitle">Choose your mode. You can change it later from Settings.</string>
+    <string name="mode_supervised_title">Supervised Mode</string>
+    <string name="mode_supervised_desc">I am the senior / I need help</string>
+    <string name="mode_supervisor_title">Supervisor Mode</string>
+    <string name="mode_supervisor_desc">I am a family member / caregiver</string>
+
+    <!-- Supervised screen -->
+    <string name="supervised_alert_button">ALERT</string>
+    <string name="supervised_call_hint">Press the button to call your family member</string>
+    <string name="supervised_no_link">Not linked yet. Show this QR code to your family member.</string>
+    <string name="supervised_linked_to">Linked with %1$s</string>
+    <string name="supervised_link_qr">Link with family member</string>
+    <string name="supervised_connecting">Connecting…</string>
+    <string name="supervised_connected">Connected</string>
+    <string name="supervised_disconnected">Disconnected</string>
+    <string name="supervised_no_peer">Not linked</string>
+    <string name="supervised_no_connection">No connection</string>
+    <string name="supervised_sos">SOS</string>
+    <string name="supervised_currently_supervised">Currently Supervised</string>
+    <string name="network_status_wifi">Connected via Wi-Fi</string>
+    <string name="network_status_cellular">Connected via mobile data</string>
+    <string name="network_status_none">No internet connection</string>
+
+    <!-- Supervisor screen -->
+    <string name="supervisor_scan_qr">Scan QR to link</string>
+    <string name="supervisor_linked_devices">Linked devices</string>
+    <string name="supervisor_no_devices">No linked devices yet. Scan the QR code on the supervised phone.</string>
+    <string name="supervisor_call">Call</string>
+    <string name="supervisor_status_online">Online</string>
+    <string name="supervisor_status_offline">Offline</string>
+
+    <!-- QR linking (editable name dialog) -->
+    <string name="link_dialog_title">Link device</string>
+    <string name="link_dialog_name_label">Name</string>
+
+    <!-- QR scanner -->
+    <string name="qr_scanner_title">Scan the QR code</string>
+    <string name="qr_scanner_hint">Point at the QR code on the supervised phone</string>
+    <string name="qr_scanner_error">Could not read the QR code</string>
+
+    <!-- Call screen -->
+    <string name="call_in_progress">Call in progress</string>
+    <string name="call_hang_up">Hang up</string>
+    <string name="call_mute">Mute</string>
+    <string name="call_unmute">Unmute</string>
+    <string name="call_flip_camera">Switch camera</string>
+    <string name="call_speaker_on">Speaker on</string>
+    <string name="call_speaker_off">Speaker off</string>
+    <string name="call_dialing">Dialing…</string>
+    <string name="call_ringing">Ringing…</string>
+    <string name="call_connecting">Connecting…</string>
+    <string name="call_ended">Call ended</string>
+    <string name="call_incoming">Incoming call</string>
+    <string name="call_accept">Accept</string>
+    <string name="call_reject">Reject</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_mode">App mode</string>
+    <string name="settings_server_url">Server URL</string>
+    <string name="settings_server_url_hint">wss://TU-DOMINIO.com</string>
+    <string name="settings_server_url_cleartext_warning">In production use wss:// with your domain (e.g. wss://TU-DOMINIO.com). Unencrypted ws:// only works in local development (Wi-Fi).</string>
+    <string name="settings_save">Save</string>
+    <string name="settings_cancel">Cancel</string>
+    <string name="settings_device_id">ID: %1$s</string>
+    <string name="settings_linked_to">Linked with: %1$s</string>
+    <string name="settings_link">Link</string>
+    <string name="settings_show_qr">Show my QR code</string>
+    <string name="settings_reset_link">Reset link</string>
+    <string name="settings_reset_link_confirm">Are you sure you want to reset the link and regenerate your ID?</string>
+    <string name="settings_permissions">Permissions</string>
+    <string name="settings_permissions_desc">Review and grant camera, microphone and notification permissions</string>
+    <string name="settings_back">Back</string>
+
+    <!-- TURN server -->
+    <string name="settings_turn_title">TURN server</string>
+    <string name="settings_turn_url_hint">turn:TU-DOMINIO.com:3478?transport=tcp</string>
+    <string name="settings_turn_username_hint">TURN username</string>
+    <string name="settings_turn_password_hint">TURN password</string>
+    <string name="settings_turn_save">Save TURN</string>
+    <string name="settings_turn_help">Required for video calls on mobile networks (4G). Leave empty if using local Wi-Fi only.</string>
+    <string name="settings_theme">Theme</string>
+    <string name="theme_system">System</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+
+    <!-- Language (V1.3): Español ⇄ English selector -->
+    <string name="settings_language">Language</string>
+    <string name="settings_language_spanish">Español</string>
+    <string name="settings_language_english">English</string>
+
+    <!-- Miscellaneous -->
+    <string name="grant_permissions_title">Permissions required</string>
+    <string name="grant_permissions_message">For video calls and QR scanning, the app needs camera and microphone access.</string>
+    <string name="grant_permissions_ok">Grant</string>
+    <string name="notification_channel_calls">Calls</string>
+    <string name="notification_channel_calls_desc">Call and alert notifications</string>
+    <string name="notification_call_title">Call in progress</string>
+    <string name="notification_call_text">Your call is still active</string>
+    <string name="notification_incoming_title">Incoming call</string>
+    <string name="notification_incoming_text">Someone is calling you</string>
+    <string name="notification_emergency_title">EMERGENCY CALL</string>
+    <string name="notification_emergency_text">%s is asking for help</string>
+    <string name="notification_answer">Answer</string>
+    <string name="notification_reject">Reject</string>
+    <string name="notification_guard_title">Alerta Mayor active</string>
+    <string name="notification_guard_text">Supervisor mode: watching for emergency calls</string>
+
+    <!-- contentDescription (V1.3): accessibility / screen readers -->
+    <string name="cd_qr_code">QR code</string>
+    <string name="cd_settings">Settings</string>
+
+    <!-- I-002 (V1.3): default name of the linked peer (localized) -->
+    <string name="default_peer_name">Family member</string>
+</resources>

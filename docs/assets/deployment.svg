@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="860" viewBox="0 0 1200 860" role="img" aria-labelledby="title desc">
+  <title id="title">Despliegue del servidor en un VPS</title>
+  <desc id="desc">Topologia de produccion: telefonos Android que conectan por TLS al proxy Nginx, servicio Node.js gestionado por systemd, coturn para relay TURN, certificado de Let's Encrypt y Firebase Cloud Messaging.</desc>
+
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0b1017"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="vps4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#101a26"/>
+      <stop offset="100%" stop-color="#0d141d"/>
+    </linearGradient>
+    <marker id="a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="a4g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#66bb6a"/>
+    </marker>
+    <marker id="a4r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#D32F2F"/>
+    </marker>
+    <marker id="a4y" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#F9A825"/>
+    </marker>
+    <filter id="sh4" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="860" fill="url(#bg4)"/>
+
+  <text x="60" y="58" fill="#E6E6E6" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="30" font-weight="700">Despliegue en un VPS</text>
+  <text x="60" y="86" fill="#8b949e" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15">TLS con Let's Encrypt · Nginx como proxy WebSocket · Node bajo systemd · coturn para NAT estricto</text>
+  <line x1="60" y1="104" x2="1140" y2="104" stroke="#21262d"/>
+
+  <!-- clients -->
+  <rect x="50" y="160" width="250" height="250" rx="16" fill="#12161d" stroke="#3b4757" stroke-width="1.5" filter="url(#sh4)"/>
+  <text x="175" y="190" text-anchor="middle" fill="#c8d1dc" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700">Telefonos Android</text>
+  <rect x="82" y="210" width="86" height="160" rx="10" fill="#2a1213" stroke="#D32F2F" stroke-width="2"/>
+  <rect x="184" y="210" width="86" height="160" rx="10" fill="#10241a" stroke="#2E7D32" stroke-width="2"/>
+  <circle cx="125" cy="290" r="24" fill="#D32F2F"/>
+  <text x="125" y="297" text-anchor="middle" fill="#FFC107" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="800">SOS</text>
+  <text x="125" y="348" text-anchor="middle" fill="#b98a8a" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9.5">supervisado</text>
+  <circle cx="227" cy="278" r="16" fill="none" stroke="#66bb6a" stroke-width="2"/>
+  <text x="227" y="283" text-anchor="middle" fill="#a5d6b0" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10">QR</text>
+  <text x="227" y="348" text-anchor="middle" fill="#7fa88b" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9.5">supervisor</text>
+
+  <!-- internet -->
+  <ellipse cx="400" cy="285" rx="66" ry="46" fill="#0f1720" stroke="#2b3a4a" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <text x="400" y="282" text-anchor="middle" fill="#8b949e" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12">Internet</text>
+  <text x="400" y="300" text-anchor="middle" fill="#5b6775" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9.5">DNS A → IP</text>
+
+  <line x1="300" y1="250" x2="334" y2="258" stroke="#58a6ff" stroke-width="2" marker-end="url(#a4)"/>
+  <line x1="300" y1="320" x2="334" y2="312" stroke="#58a6ff" stroke-width="2" marker-end="url(#a4)"/>
+  <text x="317" y="232" text-anchor="middle" fill="#7fa8d0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9.5">wss</text>
+
+  <!-- VPS container -->
+  <rect x="500" y="140" width="650" height="440" rx="18" fill="url(#vps4)" stroke="#1f6feb" stroke-width="1.5" stroke-dasharray="8 6"/>
+  <text x="530" y="172" fill="#9ecbff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11">VPS · Ubuntu 22.04 · /opt/alertamayor</text>
+
+  <line x1="470" y1="285" x2="512" y2="285" stroke="#58a6ff" stroke-width="2.5" marker-end="url(#a4)"/>
+  <text x="491" y="272" text-anchor="middle" fill="#7fa8d0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9.5">443</text>
+
+  <!-- nginx -->
+  <rect x="530" y="196" width="240" height="120" rx="12" fill="#0f1c2c" stroke="#1565C0" stroke-width="2" filter="url(#sh4)"/>
+  <text x="650" y="226" text-anchor="middle" fill="#9ecbff" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700">Nginx</text>
+  <text x="650" y="250" text-anchor="middle" fill="#8fb3d9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11">:443 TLS · proxy WebSocket</text>
+  <text x="650" y="272" text-anchor="middle" fill="#6f8fae" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5">Upgrade + Connection</text>
+  <text x="650" y="292" text-anchor="middle" fill="#6f8fae" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5">read_timeout 86400</text>
+
+  <!-- node -->
+  <rect x="820" y="196" width="300" height="120" rx="12" fill="#10241a" stroke="#2E7D32" stroke-width="2" filter="url(#sh4)"/>
+  <text x="970" y="226" text-anchor="middle" fill="#a5d6b0" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700">Servicio Node.js</text>
+  <text x="970" y="250" text-anchor="middle" fill="#8fc99d" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11">127.0.0.1:3000 · systemd</text>
+  <text x="970" y="272" text-anchor="middle" fill="#6f9a7b" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5">Restart=always</text>
+  <text x="970" y="292" text-anchor="middle" fill="#6f9a7b" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5">NoNewPrivileges=true</text>
+
+  <line x1="770" y1="256" x2="814" y2="256" stroke="#66bb6a" stroke-width="2" marker-end="url(#a4g)"/>
+  <text x="792" y="243" text-anchor="middle" fill="#8fc99d" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9.5">proxy</text>
+
+  <!-- coturn -->
+  <rect x="530" y="350" width="300" height="140" rx="12" fill="#141a22" stroke="#3b4757" stroke-width="1.5"/>
+  <text x="680" y="380" text-anchor="middle" fill="#c8d1dc" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700">coturn</text>
+  <text x="680" y="404" text-anchor="middle" fill="#9fb3c8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5">:3478 TCP/UDP · :5349 TLS</text>
+  <text x="680" y="424" text-anchor="middle" fill="#9fb3c8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5">relay UDP 49152-65535</text>
+  <text x="680" y="446" text-anchor="middle" fill="#7d8ea3" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5">fingerprint · lt-cred-mech</text>
+  <text x="680" y="468" text-anchor="middle" fill="#6b7785" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5">realm: alertamayor</text>
+
+  <!-- cert -->
+  <rect x="860" y="350" width="260" height="140" rx="12" fill="#1a1408" stroke="#F9A825" stroke-width="1.5"/>
+  <text x="990" y="380" text-anchor="middle" fill="#e0b655" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700">Let's Encrypt</text>
+  <text x="990" y="404" text-anchor="middle" fill="#c9a85f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5">certbot --nginx --redirect</text>
+  <text x="990" y="424" text-anchor="middle" fill="#c9a85f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5">:80 solo para ACME</text>
+  <text x="990" y="446" text-anchor="middle" fill="#8f7a45" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5">renovacion automatica</text>
+
+  <!-- firewall -->
+  <rect x="530" y="508" width="590" height="50" rx="10" fill="#0d1117" stroke="#2b3a4a"/>
+  <text x="550" y="538" fill="#8b949e" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11">ufw: 22/tcp · 80/tcp · 443/tcp · 3478/tcp+udp · 49152:65535/udp</text>
+
+  <!-- FCM -->
+  <rect x="860" y="608" width="260" height="110" rx="12" fill="#1a1408" stroke="#F9A825" stroke-width="1.5"/>
+  <text x="990" y="638" text-anchor="middle" fill="#e0b655" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700">Firebase FCM</text>
+  <text x="990" y="662" text-anchor="middle" fill="#c9a85f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5">serviceAccountKey.json</text>
+  <text x="990" y="682" text-anchor="middle" fill="#c9a85f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5">data-only · priority high</text>
+  <text x="990" y="702" text-anchor="middle" fill="#8f7a45" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5">nunca en el repositorio</text>
+  <line x1="970" y1="316" x2="970" y2="602" stroke="#F9A825" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#a4y)"/>
+
+  <!-- relay path -->
+  <path d="M300 400 C360 460 420 470 524 440" fill="none" stroke="#D32F2F" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#a4r)"/>
+  <text x="392" y="470" text-anchor="middle" fill="#d99a9a" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9.5">relay si NAT estricto</text>
+
+  <!-- command -->
+  <rect x="50" y="608" width="760" height="110" rx="12" fill="#0f141b" stroke="#21262d"/>
+  <text x="74" y="636" fill="#6b7785" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11"># en el VPS, desde server/</text>
+  <text x="74" y="662" fill="#a5d6b0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">sudo bash deploy-vps.sh --dominio TU-DOMINIO.com --turn</text>
+  <text x="74" y="688" fill="#7fa8d0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11">curl -s https://TU-DOMINIO.com/health   # -&gt; ok</text>
+  <text x="74" y="708" fill="#6b7785" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5">El script imprime wss://, turn: y las credenciales generadas</text>
+
+  <!-- footer -->
+  <text x="60" y="784" fill="#8b949e" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5">El build release bloquea ws:// · en produccion la app siempre usa wss://</text>
+  <text x="60" y="808" fill="#5b6775" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12">El servidor solo enruta senalizacion: el audio y el video viajan cifrados entre los telefonos.</text>
+  <text x="1140" y="808" text-anchor="end" fill="#4b5563" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5">Alerta Mayor v1.3.0</text>
+</svg>

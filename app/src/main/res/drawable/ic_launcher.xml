@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Fondo redondeado -->
+    <path
+        android:pathData="M54,54m-48,0a48,48 0,1 1,96 0a48,48 0,1 1,-96 0"
+        android:fillColor="#1565C0" />
+    <!-- Botón de alerta rojo -->
+    <path
+        android:pathData="M54,26a22,22 0,1 0,0 44a22,22 0,1 0,0 -44"
+        android:fillColor="#D32F2F" />
+    <path
+        android:pathData="M54,40 L54,54"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M54,62 A2.5,2.5 0,1 0,53.9 62"
+        android:fillColor="#FFFFFF" />
+</vector>
