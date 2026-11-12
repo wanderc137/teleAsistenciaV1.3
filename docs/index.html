@@ -258,7 +258,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.08);pa
   .section{padding:72px 0}
 }
 </style>
-</head>
+<link rel="stylesheet" href="assets/community.css?v=5"></head>
 <body style="--accent:#D32F2F;--accent2:#1565C0">
 <div class="grid-overlay"></div>
 <div class="glow one"></div>
@@ -275,6 +275,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.08);pa
       <a href="#como">Cómo funciona</a>
       <a href="#arquitectura">Arquitectura</a>
       <a href="#docs">Documentación</a>
+      <a href="#comunidad">Comunidad</a>
       <a class="btn btn-ghost" style="padding:9px 15px" href="https://github.com/wanderc137/teleAsistenciaV1.3" target="_blank" rel="noopener">GitHub</a>
     </nav>
   </div>
@@ -390,8 +391,8 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.08);pa
   <div class="wrap">
     <div class="cta-card reveal">
       <div class="kicker" style="justify-content:center">Portfolio · 21 proyectos</div>
-      <h2>¿Construimos algo así?</h2>
-      <p>¿Querés llevar teleasistencia a personas que no usan apps? La interfaz puede ser un solo botón.</p>
+      <h2>¿Te animás?</h2>
+      <p>Usá esto como base y referencia para construir teleasistencia con un botón, QR y videollamada WebRTC. Este proyecto es la prueba de que se puede hacer con componentes reales.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="https://wanderc137.github.io/" target="_blank" rel="noopener">Ver todos los proyectos <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a class="btn btn-ghost" href="https://github.com/wanderc137/teleAsistenciaV1.3" target="_blank" rel="noopener">Explorar el código</a>
@@ -443,5 +444,8 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.08);pa
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 })();
 </script>
+
+<script>window.PORTFOLIO_COMMUNITY = {"account": "wanderc137", "repo": "teleAsistenciaV1.3", "coinNamespace": "wanderc137-teleasistenciav1-3-coins-v1", "faqs": [{"q": "¿Qué hace?", "a": "Un botón SOS en el teléfono del adulto mayor llama a un familiar y abre una videollamada WebRTC."}, {"q": "¿Cómo se vinculan los teléfonos?", "a": "Con un QR, sin crear cuentas; el servidor de señalización y FCM coordinan la llamada."}, {"q": "¿Dónde corre el servidor?", "a": "Node.js 18+ con WebSocket; el despliegue incluye Nginx, Let's Encrypt y coturn opcional."}, {"q": "¿Se graba la llamada?", "a": "No. WebRTC es P2P y no hay historial/grabación."}, {"q": "¿Cuáles son los límites?", "a": "Un solo cuidador, QR sin caducidad, servidor sin autenticación y sin detección de caídas."}]};</script>
+<script src="assets/community.js?v=5" defer></script>
 </body>
 </html>
