@@ -839,6 +839,57 @@ La bitácora completa está en **[docs/BITACORA.md](docs/BITACORA.md)**. Los com
 - [Node.js `ws`](https://github.com/websockets/ws) · [coturn](https://github.com/coturn/coturn)
 
 ---
+## Ficha de evaluación
+
+**Madurez global: 3.8/5**
+
+| Criterio | Nota | Evidencia |
+|---|---:|---|
+| Madurez | 3/5 | v1.3.0 con 32 archivos Kotlin (~4.175 líneas) y 10 ciclos, auditada sin incidencias; sin tests ni autenticación. |
+| Reproducibilidad | 3/5 | Gradle 8.13, AGP 8.9.2 y JDK 17 fijados, pero exige google-services.json y dos teléfonos; no hay tests automatizados. |
+| Documentación | 5/5 | README de 854 líneas, bitácora de 571, datasheet, developer, guía VPS y auditoría; 17 limitaciones enumeradas. |
+| Honestidad de límites | 5/5 | Se declara no certificada, sin auth, QR sin caducidad, secretos sin cifrar y R-01 a R-06 abiertos. |
+| Valor demostrativo | 5/5 | Integra WebRTC, FCM data-only, FGS y accesibilidad en un flujo de emergencia probado en dos teléfonos. |
+| Facilidad de despliegue | 2/5 | Requiere SDK 35, JDK 17, proyecto Firebase y servidor; el release sale sin firmar y el cleartext está bloqueado. |
+
+Sirve como referencia completa de una app de teleasistencia con WebRTC y como base para prototipos familiares controlados. La limitación que más pesa es la seguridad: servidor sin autenticación y QR usado como credencial permanente impiden tratarla como servicio de emergencia real.
+
+## Lo que no funcionó
+
+### v1.2 · colgar — Doble dispose provocaba SIGABRT
+
+El botón de colgar y el evento EndCall llamaban a WebRtcManager.close() casi a la vez, y PeerConnection.dispose() no es idempotente. Se añadió un flag closed con synchronized para que el segundo cierre sea no-op.
+
+### v1.2 · cambio de modo — Seguía auto-aceptando en modo Supervisor
+
+SettingsViewModel guardaba el modo en DataStore, pero CallCoordinator conservaba el valor en memoria leído al conectar. Se sincronizó en caliente con coordinator.setMode(mode).
+
+### v1.2 · push — FCM no ejecutaba onMessageReceived en background
+
+El servidor enviaba notification + data y Android pintaba la notificación sin llamar al servicio. Se pasó a data-only con prioridad high y la notificación se construye en la app.
+
+### v1.2 · QR — El escáner no funcionaba sin Play Services
+
+La variante unbundled de ML Kit descargaba el modelo vía GMS y fallaba en un Huawei. Se cambió a barcode-scanning bundled, con un APK unos megabytes mayor pero escaneo sin GMS ni conexión.
+
+## Preguntas típicas
+
+**¿Qué es?**
+
+Una app Android con dos roles que convierte dos teléfonos en un canal de videollamada de emergencia: el mayor pulsa SOS y el familiar recibe la alarma.
+
+**¿Qué no hace?**
+
+No llama al 112 ni a una central, no detecta caídas, no guarda historial ni grabaciones y no admite varios cuidadores. No es un producto certificado de teleasistencia.
+
+**¿Cómo se compila y despliega?**
+
+Con JDK 17, SDK 35 y google-services.json se ejecuta ./gradlew assembleDebug y se instala con adb en dos teléfonos. El servidor arranca con npm install && node index.js; fuera de la LAN requiere wss:// y TURN.
+
+**¿Qué se puede reutilizar?**
+
+Los guards de idempotencia de WebRTC, el codec de vinculación por QR, el patrón FCM data-only y la UI de un solo botón con estado visual binario.
+
 ## Licencia
 
 MIT License — **Copyright (c) 2026 wanderc137**. Ver [LICENSE](LICENSE) para el texto completo.
