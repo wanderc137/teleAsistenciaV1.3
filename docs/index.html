@@ -291,7 +291,8 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.08);pa
 @media(max-width:760px){.concept-grid,.fail-grid{grid-template-columns:1fr}.concept-side{border-left:0;padding-left:0}}
 
 </style>
-<link href="assets/community.css?v=5" rel="stylesheet"/></head>
+<link href="assets/community.css?v=5" rel="stylesheet"/><link href="rec/player.css?v=1" rel="stylesheet"/>
+</head>
 <body style="--accent:#D32F2F;--accent2:#1565C0">
 <div class="grid-overlay"></div>
 <div class="glow one"></div>
@@ -306,6 +307,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.08);pa
 <a href="#problema">Visión</a>
 <a href="#como">Cómo funciona</a>
 <a href="#arquitectura">Arquitectura</a>
+<a href="#video">Video</a>
 <a href="#docs">Documentación</a>
 <a href="#comunidad">Comunidad</a>
 <a class="btn btn-ghost" href="https://github.com/wanderc137/teleAsistenciaV1.3" rel="noopener" style="padding:9px 15px" target="_blank">GitHub</a>
@@ -356,6 +358,45 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.08);pa
 <div class="timeline reveal"><div class="step"><div class="step-num">01</div><div class="step-body"><h3>Vincular</h3><p>El familiar genera un QR y el adulto mayor lo escanea para asociar los dispositivos.</p></div></div><div class="step"><div class="step-num">02</div><div class="step-body"><h3>Alertar</h3><p>El adulto mayor pulsa el botón grande; la app envía la señal al servidor.</p></div></div><div class="step"><div class="step-num">03</div><div class="step-body"><h3>Llamar</h3><p>El servidor notifica al familiar por WebSocket/FCM y se inicia la Videollamada WebRTC.</p></div></div><div class="step"><div class="step-num">04</div><div class="step-body"><h3>Contestar</h3><p>La app del adulto mayor acepta automáticamente y activa el altavoz.</p></div></div></div>
 </div>
 </section>
+
+<section class="section tight rec-section" id="video" style="--accent:#2E7DFF;--accent2:#14F195">
+<div class="wrap">
+<div class="rec-kicker">REC · VIDEO · 2:40</div>
+<h2 class="rec-h2">Alerta Mayor · del botón rojo al SDP</h2>
+<p class="rec-lead">Recorrido por la app de teleasistencia: contenedor de dependencias, vínculo por QR, servidor de señalización, push FCM, cliente WebSocket, máquina de estados, offer/answer, ICE y cierre idempotente.</p>
+<div class="rec-banner">
+<span class="rec-banner-icon">📋</span>
+<strong>Puedes copiar y pegar los comandos del video desde el video !!!</strong>
+<span>Pausá, seleccioná el texto de la terminal y copiá.</span>
+</div>
+<div class="rec-shell">
+<div class="rec-bar"><i></i><i></i><i></i><span class="rec-title">Alerta Mayor · del botón rojo al SDP · asciinema</span><span class="rec-rec"><b></b>REC</span></div>
+<div class="rec-screen-wrap">
+<div class="rec-screen" id="rec-screen"></div>
+<div class="rec-poster" id="rec-poster">
+<div class="rec-kicker">ASCIINEMA · 2:40</div>
+<h3>Alerta Mayor · del botón rojo al SDP</h3>
+<p>Recorrido por la app de teleasistencia: contenedor de dependencias, vínculo por QR, servidor de señalización, push FCM, cliente WebSocket, máquina de estados, offer/answer, ICE y cierre idempotente.</p>
+<div class="rec-poster-meta">teleAsistenciaV1.3 · código real</div>
+<button class="rec-btn rec-primary" id="rec-start" type="button">▶ Reproducir</button>
+</div>
+</div>
+<div class="rec-controls">
+<button class="rec-btn rec-primary" id="rec-play" type="button">▶ Reproducir</button>
+<button class="rec-btn" id="rec-restart" type="button">↺ Reiniciar</button>
+<input class="rec-progress" id="rec-range" type="range" min="0" max="1000" value="0" aria-label="Progreso"/>
+<span class="rec-time" id="rec-time">0:00 / 2:40</span>
+<select class="rec-speed" id="rec-speed" aria-label="Velocidad"><option value="1">1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option></select>
+<button class="rec-btn" id="rec-full" type="button" title="Pantalla completa">⛶</button>
+<button class="rec-btn" id="rec-copy" type="button">⧉ Copiar comandos</button>
+<a class="rec-download" href="rec/teleAsistenciaV1.3.cast" download>descargar .cast</a>
+</div>
+</div>
+<p class="rec-note">Los fragmentos corresponden al código real del repositorio. No se muestran tokens FCM, claves de servicio ni el contenido de google-services.json; el servidor requiere configuración propia para FCM y TLS.</p>
+<div class="rec-chapters"><span class="rec-chip"><b>0:06</b> EL PROBLEMA</span><span class="rec-chip"><b>0:19</b> ARQUITECTURA</span><span class="rec-chip"><b>0:32</b> VINCULACIÓN POR QR</span><span class="rec-chip"><b>0:45</b> SEÑALIZACIÓN</span><span class="rec-chip"><b>0:59</b> RESCATE POR FCM</span><span class="rec-chip"><b>1:13</b> CLIENTE WEBSOCKET</span><span class="rec-chip"><b>1:25</b> MÁQUINA DE ESTADOS</span><span class="rec-chip"><b>1:40</b> NEGOCIACIÓN SDP</span><span class="rec-chip"><b>1:53</b> ICE Y TURN</span><span class="rec-chip"><b>2:06</b> CIERRE IDEMPOTENTE</span><span class="rec-chip"><b>2:20</b> CÓMO EJECUTARLO</span></div>
+</div>
+</section>
+
 <section class="section tight" id="arquitectura">
 <div class="wrap">
 <div class="section-head reveal">
@@ -466,5 +507,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.08);pa
 </script>
 <script>window.PORTFOLIO_COMMUNITY = {"account": "wanderc137", "repo": "teleAsistenciaV1.3", "coinNamespace": "wanderc137-teleasistenciav1-3-coins-v1", "faqs": [{"q": "¿Qué hace?", "a": "Un botón SOS en el teléfono del adulto mayor llama a un familiar y abre una videollamada WebRTC."}, {"q": "¿Cómo se vinculan los teléfonos?", "a": "Con un QR, sin crear cuentas; el servidor de señalización y FCM coordinan la llamada."}, {"q": "¿Dónde corre el servidor?", "a": "Node.js 18+ con WebSocket; el despliegue incluye Nginx, Let's Encrypt y coturn opcional."}, {"q": "¿Se graba la llamada?", "a": "No. WebRTC es P2P y no hay historial/grabación."}, {"q": "¿Cuáles son los límites?", "a": "Un solo cuidador, QR sin caducidad, servidor sin autenticación y sin detección de caídas."}]};</script>
 <script defer="" src="assets/community.js?v=6"></script>
+<script defer src="rec/teleAsistenciaV1.3.cast.js?v=1"></script>
+<script defer src="rec/player.js?v=1"></script>
 </body>
 </html>
